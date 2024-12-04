@@ -24,8 +24,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "NEWS_API_KEY", "\"6444c6d8fdda4861aa9609eb13fe74b8\"")
+        }
+        debug {
+            buildConfigField("String", "NEWS_API_KEY", "\"6444c6d8fdda4861aa9609eb13fe74b8\"")
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -42,7 +51,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.squareup.converter.gson)
 }
